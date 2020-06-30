@@ -42,5 +42,40 @@ function calculate(arr) {
     }
     return total/totalCreditHour;
 }
+ async function calculateFromDb (databaseName, tableName,columnName,gradeId,callback){
+     let returnedValue;
+    const {MongoClient, ObjectId}= require('mongodb');
+    MongoClient.connect("mongodb://localhost:27017",{ useUnifiedTopology: true },async (err, client)=>{
+      if(err){
+        return "unable to connect to the database";
+      }
+      db=client.db(databaseName);
+      var collection=db.collection(tableName);
+      var myPromise = () => {
+        return new Promise((resolve, reject) => {
+            db.
+         collection(tableName)
+           .find(new ObjectId(gradeId))
+           .limit(1)
+           .toArray(function(err, data) {
+              err 
+                 ? reject(err) 
+                 : resolve(data[0]);
+            });
+        });
+       
+        }
+        var grade = await myPromise();
+        var res = calculate(grade[columnName]);
+        callback(res);
+     
+    }
+ 
+    );
+  
+   
+ }
 
-console.log(calculate([{grade:"A", creditHour: 4}, {grade:"B-", creditHour: 3},  {grade:"C+", creditHour: 2}]));
+
+ 
+module.exports={calculate,calculateFromDb};

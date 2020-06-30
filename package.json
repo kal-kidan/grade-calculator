@@ -1,0 +1,27 @@
+{
+  "name": "grade-calculator",
+  "version": "1.0.0",
+  "description": "grade-calculator is a package used to calculate total grade from given arrays of course  creditHour and course result.",
+  "main": "grade.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kal-kidan/grade-calculator.git"
+  },
+  "keywords": [
+    "grade",
+    "calculator",
+    "grade-calculator"
+  ],
+  "author": "kal05627356@gmail.com (www.bruhtech.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kal-kidan/grade-calculator/issues"
+  },
+  "homepage": "https://github.com/kal-kidan/grade-calculator#readme",
+  "dependencies": {
+    "mongodb": "^3.5.9"
+  }
+}
